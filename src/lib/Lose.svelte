@@ -10,14 +10,17 @@
       'https://g.tenor.com/v1/search?q=lose&key=SJICIPYYIQ2D',
     );
     const { results } = await res.json();
-    img = results[0].media.gif.url;
+    console.log(results[Math.floor(Math.random() * 10)]);
+    img = results[Math.floor(Math.random() * 10)].media[0].gif.url;
   });
 </script>
 
 <div class="retray" style={`--bg:url(${img})`}>
-  <h3>Your Score:</h3>
-  <h1>{score}</h1>
-  <button on:click>HOME</button>
+  <div class="content">
+    <h3>Your Score:</h3>
+    <h1>{score}</h1>
+    <button on:click>HOME</button>
+  </div>
 </div>
 
 <style>
@@ -26,12 +29,24 @@
     background-color: #111;
     color: #fff;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-image: var(--bg);
-    background-size: cover;
+    background-size: contain;
     background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .content {
+    padding: 0 20px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
   }
 
   h1 {
