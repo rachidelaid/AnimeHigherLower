@@ -3,19 +3,19 @@
   export let i = 1;
 </script>
 
-<div class="card" style={`--bg:url(${data.node.main_picture.medium})`}>
+<div class="card" style={`--bg:url(${data.node.main_picture.large})`}>
   <div class="content">
-    <h2>"{data.node.title}"</h2>
+    <h2>" {data.node.title} "</h2>
     <p>ranked</p>
     {#if !i}
       <h3>Number <span>{data.ranking.rank}</span></h3>
     {:else}
-      <button id="higher"
+      <button id="higher" on:click
         >Higher <svg style="width:24px;height:24px" viewBox="0 0 24 24">
           <path fill="currentColor" d="M7,15L12,10L17,15H7Z" />
         </svg></button
       >
-      <button id="lower"
+      <button id="lower" on:click
         >Lower<svg style="width:24px;height:24px" viewBox="0 0 24 24">
           <path fill="currentColor" d="M7,10L12,15L17,10H7Z" />
         </svg></button
@@ -33,7 +33,7 @@
     align-items: center;
     text-align: center;
     background-image: var(--bg);
-    background-size: cover;
+    background-size: contain;
     background-position: center;
   }
 
@@ -54,7 +54,7 @@
   }
 
   button {
-    margin: 10px 0;
+    margin: 5px 0;
     padding: 10px 25px;
     border: 2px solid #fff;
     background-color: transparent;
