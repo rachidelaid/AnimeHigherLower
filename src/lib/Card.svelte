@@ -33,7 +33,7 @@
     align-items: center;
     text-align: center;
     background-image: var(--bg);
-    background-size: contain;
+    background-size: cover;
     background-position: center;
   }
 
