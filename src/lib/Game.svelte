@@ -42,7 +42,6 @@
 
   const handleClick = (e) => {
     if (waiting) return;
-    console.log('click');
     waiting = true;
 
     if (e.target.id === 'lower') {
