@@ -14,13 +14,7 @@
   $: arr = list.slice(index, index + 2);
 
   onMount(async () => {
-    // const res = await fetch('./list.json');
-    const res = await fetch('https://api.myanimelist.net/v2/anime/ranking?ranking_type=all&limit=500',{
-      mode:"no-cors",
-      headers:{
-        "X-MAL-CLIENT-ID":"e18c1cbf1931a0f2017a055125cc5132"
-      }
-    });
+    const res = await fetch('src/list.json');
     const { data } = await res.json();
     list = data.sort(() => Math.random() - 0.5);
   });
