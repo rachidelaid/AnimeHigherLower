@@ -12,6 +12,12 @@
   let index = 0;
   let score = 0;
 
+  if (!localStorage.getItem('highScore')) {
+    localStorage.setItem('highScore', `0`);
+  }
+
+  let waiting = false;
+
   $: arr = list.slice(index, index + 2);
 
   onMount(async () => {
@@ -21,19 +27,24 @@
 
   const win = () => {
     setTimeout(() => {
+      waiting = false;
       index = index + 1;
       score = score + 1;
-    }, 1000);
 
-    if (+localStorage.getItem('highScore') < score) {
-      localStorage.setItem('highScore', `${score}`);
-    }
+      if (+localStorage.getItem('highScore') < score) {
+        localStorage.setItem('highScore', `${score}`);
+      }
+    }, 1000);
 
     gameState = 'win';
     document.querySelector('.circle').style.setProperty('--winHeight', '100%');
   };
 
   const handleClick = (e) => {
+    if (waiting) return;
+    console.log('click');
+    waiting = true;
+
     if (e.target.id === 'lower') {
       if (arr[0].ranking.rank <= arr[1].ranking.rank) {
         win();
