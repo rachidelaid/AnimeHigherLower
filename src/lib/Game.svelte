@@ -25,6 +25,10 @@
       score = score + 1;
     }, 1000);
 
+    if (+localStorage.getItem('highScore') < score) {
+      localStorage.setItem('highScore', `${score}`);
+    }
+
     gameState = 'win';
     document.querySelector('.circle').style.setProperty('--winHeight', '100%');
   };
@@ -96,6 +100,9 @@
       </div>
     </div>
     <h2>Score: {score}</h2>
+    {#if localStorage.getItem('highScore')}
+      <h3>Highest Score: {localStorage.getItem('highScore')}</h3>
+    {/if}
   </div>
 </main>
 
@@ -160,6 +167,13 @@
     position: fixed;
     bottom: 0;
     right: 10px;
+    color: #fff;
+  }
+
+  h3 {
+    position: fixed;
+    bottom: 0;
+    left: 10px;
     color: #fff;
   }
 </style>
