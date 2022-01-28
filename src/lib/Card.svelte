@@ -73,4 +73,10 @@
     color: #000;
     background-color: #fff;
   }
+
+  @media (max-width: 600px) {
+    .card {
+      height: 50vh;
+    }
+  }
 </style>

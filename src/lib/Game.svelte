@@ -186,4 +186,10 @@
     left: 10px;
     color: #fff;
   }
+
+  @media (max-width: 600px) {
+    .game {
+      flex-direction: column;
+    }
+  }
 </style>
