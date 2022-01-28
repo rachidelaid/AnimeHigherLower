@@ -8,7 +8,7 @@ this game is built using svelte. and the anime data is form [myanimelist](https:
 
 ## Live Link
 
-[https://trello-svelte-clone.netlify.app/](https://github.com/rachidelaid/AnimeHigherLower)
+[https://anime-higher-lower.netlify.app/](https://anime-higher-lower.netlify.app/)
 
 ## Get started
 
