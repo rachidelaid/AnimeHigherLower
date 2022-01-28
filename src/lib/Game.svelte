@@ -14,7 +14,7 @@
   $: arr = list.slice(index, index + 2);
 
   onMount(async () => {
-    const res = await fetch('src/list.json');
+    const res = await fetch('./src/list.json');
     const { data } = await res.json();
     list = data.sort(() => Math.random() - 0.5);
   });
