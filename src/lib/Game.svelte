@@ -4,6 +4,7 @@
   const dispatch = createEventDispatcher();
 
   import Card from './Card.svelte';
+  import data from '../list';
 
   let gameState = 'null';
 
@@ -14,8 +15,7 @@
   $: arr = list.slice(index, index + 2);
 
   onMount(async () => {
-    const res = await fetch('./src/list.json');
-    const { data } = await res.json();
+    // const res = await fetch('./src/list.json');
     list = data.sort(() => Math.random() - 0.5);
   });
 
