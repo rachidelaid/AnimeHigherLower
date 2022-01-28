@@ -2,7 +2,7 @@
 
 this is game where you have to decide if the right anime is ranked lower or higher than the left one. guess wrong once and you have to start again
 
-![screenshot](./screenshot.png)
+![screenshot](./screenshot.jpeg)
 
 this game is built using svelte. and the anime data is form [myanimelist](https://myanimelist.net/). the losing gif are from the [tenor api](https://tenor.com/gifapi).
 
