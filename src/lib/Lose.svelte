@@ -10,8 +10,7 @@
       'https://g.tenor.com/v1/search?q=lose&key=SJICIPYYIQ2D',
     );
     const { results } = await res.json();
-    console.log(results[Math.floor(Math.random() * 10)]);
-    img = results[Math.floor(Math.random() * 10)].media[0].gif.url;
+    img = results[Math.floor(Math.random() * 20)].media[0].gif.url;
   });
 </script>
 
