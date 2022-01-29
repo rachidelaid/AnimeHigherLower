@@ -2,12 +2,17 @@
   import Game from './lib/Game.svelte';
   import Start from './lib/Start.svelte';
   import Lose from './lib/Lose.svelte';
+  import LeaderBoard from './lib/LeaderBoard.svelte';
 
   let state = 'start';
   let score = 0;
 
-  const play = () => {
-    state = 'game';
+  const play = (e) => {
+    if (e.target.id == 'start') {
+      state = 'game';
+    } else {
+      state = 'board';
+    }
   };
 
   const home = () => {
@@ -32,6 +37,6 @@
   <Lose {score} on:click={home} />
 {/if}
 
-<style>
-  /* your styles go here */
-</style>
+{#if state === 'board'}
+  <LeaderBoard on:click={home} />
+{/if}

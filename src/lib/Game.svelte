@@ -111,7 +111,7 @@
     </div>
     <h2>Score: {score}</h2>
     {#if localStorage.getItem('highScore')}
-      <h3>Highest Score: {localStorage.getItem('highScore')}</h3>
+      <h3>Your Highest Score: {localStorage.getItem('highScore')}</h3>
     {/if}
   </div>
 </main>

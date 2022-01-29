@@ -4,6 +4,7 @@
   export let score;
 
   let img;
+  let show = false;
 
   onMount(async () => {
     const res = await fetch(
@@ -12,14 +13,55 @@
     const { results } = await res.json();
     img = results[Math.floor(Math.random() * 20)].media[0].gif.url;
   });
+
+  const showInput = (e) => {
+    if (show && e.target.id === 'modal') {
+      show = false;
+      return;
+    }
+
+    show = true;
+  };
+
+  const submit = (e) => {
+    show = false;
+    const obj = {
+      user: e.target.elements.username.value.trim(),
+      score,
+    };
+    fetch(
+      'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/7KnK7q73461Vs7VjieM2/scores',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(obj),
+      },
+    );
+
+    e.target.reset();
+  };
 </script>
 
 <div class="retray" style={`--bg:url(${img})`}>
   <div class="content">
     <h3>Your Score:</h3>
     <h1>{score}</h1>
-    <button on:click>HOME</button>
+    <div class="btns">
+      <button on:click={showInput}>SAVE SCORE</button>
+      <button on:click>HOME</button>
+    </div>
   </div>
+
+  {#if show}
+    <div class="modal" id="modal" on:click={showInput}>
+      <form on:submit|preventDefault={submit}>
+        <input type="text" id="username" placeholder="Your Name" required />
+        <button type="submit">SUBMIT</button>
+      </form>
+    </div>
+  {/if}
 </div>
 
 <style>
@@ -48,28 +90,45 @@
     color: #fff;
   }
 
+  .btns {
+    display: flex;
+    gap: 50px;
+  }
+
   h1 {
     color: rgb(255, 240, 102);
   }
 
-  button {
-    margin: 5px 0;
-    padding: 10px 25px;
-    border: 2px solid #fff;
-    background-color: transparent;
+  .modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 20px;
-    font-weight: bold;
-    font-size: 18px;
-    color: #fff;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
   }
 
-  button:hover {
-    color: #000;
-    background-color: #fff;
+  form {
+    padding: 20px;
+    width: 70%;
+    background-color: #222;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  form input {
+    width: 100%;
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 18px;
+    border: 2px solid #fff;
   }
 </style>
